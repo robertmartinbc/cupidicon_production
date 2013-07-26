@@ -11,6 +11,8 @@
 <%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
 <% end %>
 
-<%= link_to "Write", assignments_write_path(@assignment), class: 'btn btn-mini' %>
+<%= form_tag("#{@assignment.id}/write") do %>
+  <div><%= submit_tag 'Write' %></div>
+<% end %>
 
 </div>

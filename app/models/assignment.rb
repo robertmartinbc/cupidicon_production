@@ -8,29 +8,30 @@ class Assignment < ActiveRecord::Base
 
     state_machine initial: :open do
     state :open, value: 0
-    state :pending, value: 1
-    state :review, value: 2
-    state :published, value: 3
+    state :review, value: 1
+    state :write, value: 2
+    state :authorize, value: 3
+    state :published, value: 4
 
 #
-    event :pending do
-      transition :open => :pending
+    event :review do
+      transition :open => :review
     end
 
     event :renew do 
-      transition :pending => :open
-    end
-
-    event :review do
-      transition :pending => :review
-    end
-
-    event :cancel do
       transition :review => :open
+    end
+   
+    event :write do 
+      transition :review => :write
+    end
+
+    event :authorize do 
+      transition :write => :authorize
     end
 
     event :published do
-      transition :review => :published
+      transition :authorize => :published
     end
   end
 end

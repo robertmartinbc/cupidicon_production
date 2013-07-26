@@ -12,5 +12,7 @@ CupidiconTest::Application.routes.draw do
 
   post "assignments/:id/renew", to: 'assignments#renew'
 
+  post "assignments/:id/write", to: 'assignments#write'
+
   root :to => 'welcome#index'
 end

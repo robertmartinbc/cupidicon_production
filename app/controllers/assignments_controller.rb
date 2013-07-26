@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
 
   def show
   	@assignment = Assignment.find(params[:id])
-    @assignment.pending 
+    @assignment.review 
     # Change the current user's state
     # Record a pending transaction
 
@@ -52,7 +52,9 @@ end
   end
 
   def write  
-   
+    @assignment = Assignment.find(params[:id])
+    @assignment.write
+    
   end
 
 end
