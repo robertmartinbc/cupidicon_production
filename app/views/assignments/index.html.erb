@@ -8,10 +8,7 @@
       <h4 class="media-heading">
         <%= link_to assignment.title, assignment %>
       </h4>
-      <small>
-        submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>
-        <%= assignment.comments.count %> Comments
-      </small>
+      
     </div>
   </div>
 <% end %>

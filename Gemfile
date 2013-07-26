@@ -25,6 +25,8 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
 gem 'cancan'
+gem 'state_machine', "~> 1.2.0"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
