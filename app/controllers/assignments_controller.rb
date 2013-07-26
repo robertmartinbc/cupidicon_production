@@ -50,4 +50,9 @@ end
     @assignment.renew
     redirect_to "/assignments"
   end
+
+  def write  
+   
+  end
+
 end

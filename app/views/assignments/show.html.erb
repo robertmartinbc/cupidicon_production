@@ -1,11 +1,16 @@
 <h1><%= @assignment.title %></h1>
 
-<% if can? :edit, @assignment %>
-<%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
-<% end %>
 
 <p><%= @assignment.body %></p>
 
 <%= form_tag("#{@assignment.id}/renew") do %>
   <div><%= submit_tag 'Release' %></div>
 <% end %>
+<div>
+<% if can? :edit, @assignment %>
+<%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
+<% end %>
+
+<%= link_to "Write", assignments_write_path(@assignment), class: 'btn btn-mini' %>
+
+</div>
