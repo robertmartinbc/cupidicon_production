@@ -17,17 +17,15 @@
   </div>
 </div>
 
-<%= form_tag("#{@assignment.id}/renew") do %>
-  <div><%= submit_tag 'Release' %></div>
+<%= form_tag("cancel") do %>
+  <div><%= submit_tag 'Cancel' %></div>
 <% end %>
 
-<%= form_tag("#{@assignment.id}/renew") do %>
-  <div><%= submit_tag 'Save' %></div>
-<% end %>
-
-<%= form_tag("#{@assignment.id}/renew") do %>
+<%= form_tag("#{@assignment}/authorize") do %>
   <div><%= submit_tag 'Submit' %></div>
 <% end %>
+
+
 
 
 

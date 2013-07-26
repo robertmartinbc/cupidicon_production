@@ -26,6 +26,10 @@ class Assignment < ActiveRecord::Base
       transition :review => :write
     end
 
+    event :cancel do 
+      transition :write => :open
+    end
+
     event :authorize do 
       transition :write => :authorize
     end

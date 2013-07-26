@@ -53,8 +53,29 @@ end
 
   def write  
     @assignment = Assignment.find(params[:id])
-    @assignment.write
-    
+    @assignment.write        
+  end
+
+  def cancel
+    @assignment = Assignment.find(params[:id])
+    if @assignment.cancel
+      flash[:notice] = "You can only review this assignment 1 more time."
+      redirect_to "/assignments"
+    else
+      flash[:error] = "Something went wrong."
+      redirect_to "/assignments"
+    end
+  end
+
+
+  def authorize
+    @assignment = Assignment.find(params[:id])
+    assignment.authorize
+  end
+ 
+  def published
+    assignment.published
+    redirect_to "/authorize"
   end
 
 end
