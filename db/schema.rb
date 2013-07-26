@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725205132) do
+ActiveRecord::Schema.define(:version => 20130726012710) do
 
   create_table "assignments", :force => true do |t|
     t.string   "title"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(:version => 20130725205132) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "state"
   end
 
+  add_index "assignments", ["state"], :name => "index_assignments_on_state"
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
   create_table "comments", :force => true do |t|

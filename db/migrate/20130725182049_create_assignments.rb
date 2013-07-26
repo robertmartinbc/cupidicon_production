@@ -4,8 +4,6 @@ class CreateAssignments < ActiveRecord::Migration
       t.string :title
       t.text :body
 
-      t.integer :state
-
 
       t.timestamps
     end

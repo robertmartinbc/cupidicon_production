@@ -5,3 +5,7 @@
 <% end %>
 
 <p><%= @assignment.body %></p>
+
+<%= form_tag("#{@assignment.id}/renew") do %>
+  <div><%= submit_tag 'Release' %></div>
+<% end %>

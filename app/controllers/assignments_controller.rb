@@ -5,6 +5,10 @@ class AssignmentsController < ApplicationController
 
   def show
   	@assignment = Assignment.find(params[:id])
+    @assignment.pending 
+    # Change the current user's state
+    # Record a pending transaction
+
   end
 
   def new
@@ -39,5 +43,11 @@ end
       flash[:error] = "There was an error saving the Assignment. Please try again."
       render :new
     end
+  end
+
+  def renew
+    @assignment = Assignment.find(params[:id])
+    @assignment.renew
+    redirect_to "/assignments"
   end
 end
