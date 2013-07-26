@@ -2,8 +2,6 @@ CupidiconTest::Application.routes.draw do
   
   get "assignments/write"
 
-  get "assignment/write"
-
   devise_for :users
 
   resources :assignments
