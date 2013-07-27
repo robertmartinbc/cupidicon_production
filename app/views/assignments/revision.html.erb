@@ -1,0 +1,21 @@
+<h1>Assignment Revision</h1>
+<p>The client has requested a rewrite for this assignment. Please read the notes carefully and resubmit accordingly.</p>
+
+<p>Alternatively, you can cancel the assignment and let another author attempt it.</p>
+
+<h1><%= @assignment.title %></h1>
+
+
+<p><%= @assignment.body %></p>
+
+<%= form_tag("/assignments/#{@assignment.id}/resubmit") do %>
+  <div><%= submit_tag 'Resubmit' %></div>
+<% end %>
+<div>
+
+<%= form_tag("cancel") do %>
+  <div><%= submit_tag 'Cancel' %></div>
+<% end %>
+
+</div>
+

@@ -70,12 +70,34 @@ end
 
   def authorize
     @assignment = Assignment.find(params[:id])
-    assignment.authorize
+    @assignment.authorize
+   
   end
  
   def published
-    assignment.published
-    redirect_to "/authorize"
+    @assignment = Assignment.find(params[:id])
+    @assignment.published
+  end
+
+  def reject
+    @assignment = Assignment.find(params[:id])
+    @assignment.reject
+    redirect_to "/assignments"
+  end
+
+  def revision
+    @assignment = Assignment.find(params[:id])
+    @assignment.revision
+  end
+
+  def resubmit
+    @assignment = Assignment.find(params[:id])
+    @assignment.resubmit
+  end
+
+  def resubmission
+    @assignment = Assignment.find(params[:id])
+    @assignments.resubmission
   end
 
 end

@@ -1,5 +1,5 @@
-<h1>Assignments#authorize</h1>
-<p>An author has fulfilled your requested assignment. Please accept or reject accordingly. You can also request the author to rewrite the assignment if desired. Please specify any changes that need to be made.</p>
+<h1>Assignment Resubmit</h1>
+<p>An author has fulfilled your requested revision. Please accept or reject accordingly. You can also request the author to rewrite the assignment if desired. Please specify any changes that need to be made.</p>
 
 <h1><%= @assignment.title %></h1>
 
@@ -10,7 +10,7 @@
   <div><%= submit_tag 'Accept' %></div>
 <% end %>
 <div>
-  <%= form_tag("revision") do %>
+  <%= form_tag("/assignments/#{@assignment.id}/revision") do %>
   <div><%= submit_tag 'Revision' %></div>
 <% end %>
 

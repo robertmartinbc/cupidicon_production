@@ -21,7 +21,7 @@
   <div><%= submit_tag 'Cancel' %></div>
 <% end %>
 
-<%= form_tag("#{@assignment}/authorize") do %>
+<%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
   <div><%= submit_tag 'Submit' %></div>
 <% end %>
 
