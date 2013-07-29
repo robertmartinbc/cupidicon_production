@@ -11,7 +11,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
-  # TODO Add state to user
+  state_machine initial: :available do
+    state :available, value: 0
+    state :engaged, value: 1
+
+    event :write do 
+      transition :available => :engaged
+    end
+    
+  end
 
   before_create :set_member
 

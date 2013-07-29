@@ -60,5 +60,13 @@ class Assignment < ActiveRecord::Base
       transition :resubmit => :published
     end
 
+    event :cancel do 
+      transition :revision => :open
+    end
+
+    event :reject do 
+      transition :resubmit => :open
+    end
+
     end
 end

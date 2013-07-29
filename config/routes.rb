@@ -1,5 +1,9 @@
 CupidiconTest::Application.routes.draw do
   
+  get "user/available"
+
+  get "user/engaged"
+
   get "assignments/reauthorization"
 
   get "assignments/resubmit"
