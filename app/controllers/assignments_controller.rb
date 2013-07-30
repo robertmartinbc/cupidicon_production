@@ -7,7 +7,7 @@ class AssignmentsController < ApplicationController
   	@assignment = Assignment.find(params[:id])
     @assignment.review 
     # Change the current user's state
-    # Record a pending transaction
+    @assignment.transactions.create(transaction_type: "review", writer_id: @assignment.user_id)
 
   end
 

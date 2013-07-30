@@ -35,9 +35,11 @@ ActiveRecord::Schema.define(:version => 20130729195535) do
   add_index "comments", ["assignment_id"], :name => "index_comments_on_assignment_id"
 
   create_table "transactions", :force => true do |t|
-    t.integer  "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "transaction_type"
+    t.integer  "assignment_id"
+    t.integer  "writer_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|

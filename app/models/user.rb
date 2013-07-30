@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
+  # has_many :posts, :class_name => 'Assignment'
+  # has_many :projects, :class_name => 'Assignment'
   has_many :assignments
+  has_many :writer_actions, class_name: "Transactions"
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
