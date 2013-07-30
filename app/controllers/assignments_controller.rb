@@ -1,6 +1,8 @@
 class AssignmentsController < ApplicationController
   def index
   	@assignments = Assignment.all
+
+
   end
 
   def show
@@ -98,6 +100,11 @@ end
   def resubmission
     @assignment = Assignment.find(params[:id])
     @assignments.resubmission
+  end
+
+def hide
+    @assignment = Assignment.find(params[:id])
+    @assignnments.hide
   end
 
 end

@@ -16,6 +16,7 @@ class Assignment < ActiveRecord::Base
     state :resubmit, value: 5   
     state :published, value: 6
 
+
 #
     event :review do
       transition :open => :review
@@ -67,6 +68,10 @@ class Assignment < ActiveRecord::Base
 
     event :reject do 
       transition :resubmit => :open
+    end
+
+    event :hide do
+      transition :open => :review
     end
 
     end
