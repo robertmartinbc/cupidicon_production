@@ -25,6 +25,11 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
 gem 'cancan'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+gem 'will_paginate', '~> 3.0'
 gem 'state_machine', "~> 1.2.0"
 
 

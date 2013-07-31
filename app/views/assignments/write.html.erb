@@ -1,5 +1,12 @@
-<h1>Write Assignment</h1>
-<h1><%= @assignment.title %></h1>
+<h3>Write Assignment</h3>
+
+<p style="text-align: justify;">You have elected to write this assignment. Please read the requirements carefully. Once you have written the assignment it will be reviewed by the client. They may request a revision so please check your assignment status regularly. Should they accept your submission you will be paid the agreed amount accordingly.</p>
+
+<p>Alternatively, you can elect to cancel the assignment, but you will only be allowed to select this assignment once more.</p>
+
+<hr>
+
+<h4><%= @assignment.title %></h4>
 
 <p><%= @assignment.body %></p>
 
@@ -14,16 +21,23 @@
       </div>
       </div>
     <% end %>
-  </div>
+    <div class="control-group">
+      <div class="controls">
+    <%= form_tag("cancel") do %>
+    <%= submit_tag 'Cancel' %>
+    </div>
 </div>
-
-<%= form_tag("cancel") do %>
-  <div><%= submit_tag 'Cancel' %></div>
+  <% end %>
+ <div class="control-group">
+      <div class="controls">
+  <%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
+  <%= submit_tag 'Submit' %>
 <% end %>
+</div>
+  </div>
+  
 
-<%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
-  <div><%= submit_tag 'Submit' %></div>
-<% end %>
+
 
 
 

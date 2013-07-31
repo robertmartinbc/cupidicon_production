@@ -22,6 +22,12 @@ CupidiconTest::Application.routes.draw do
 
   match "about" => 'welcome#about', via: :get
 
+  match "need_content" => "welcome#need_content", via: :get
+
+  match "write_content" => "welcome#write_content", via: :get
+
+  match "loves_lexicon" => "welcome#loves_lexicon", via: :get 
+
   post "assignments/:id/renew", to: 'assignments#renew'
 
   post "assignments/:id/cancel", to: 'assignments#cancel'

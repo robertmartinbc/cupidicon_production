@@ -1,8 +1,7 @@
 class AssignmentsController < ApplicationController
+
   def index
   	@assignments = Assignment.where(state: 0)
-
-
   end
 
   def show
@@ -23,7 +22,7 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-  	@assignments = Assignment.new
+  	@assignment = Assignment.new
     authorize! :create, Assignment, message: "You need to be a member to create a new assignment."
   end
 
@@ -40,7 +39,7 @@ class AssignmentsController < ApplicationController
 end
 
   def edit
-  	@assignment = Assignment.find(params[:id])
+  	@assignments = Assignment.find(params[:id])
     authorize! :edit, @assignment, message: "You need to own the assignment to edit it."
   end
 

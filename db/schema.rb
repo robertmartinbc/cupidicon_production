@@ -16,8 +16,16 @@ ActiveRecord::Schema.define(:version => 20130729195535) do
   create_table "assignments", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.integer  "word_count"
+    t.string   "language"
+    t.string   "rating"
+    t.text     "key_words"
+    t.integer  "cost"
+    t.string   "style"
+    t.text     "instructions"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.integer  "state"
   end

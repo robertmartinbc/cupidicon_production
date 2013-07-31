@@ -1,5 +1,5 @@
 <h1>Assignment Resubmit</h1>
-<p>An author has fulfilled your requested revision. Please accept or reject accordingly. You can also request the author to rewrite the assignment if desired. Please specify any changes that need to be made.</p>
+<p>An author has fulfilled your requested revision. Please accept or reject accordingly. You can also request the author to rewrite the assignment if desired. Please specify any changes that need to be made below.</p>
 
 <h1><%= @assignment.title %></h1>
 
@@ -7,16 +7,16 @@
 <p><%= @assignment.body %></p>
 
 <%= form_tag("/assignments/#{@assignment.id}/published") do %>
-  <div><%= submit_tag 'Accept' %></div>
+  <%= submit_tag 'Accept' %>
 <% end %>
-<div>
+
   <%= form_tag("/assignments/#{@assignment.id}/revision") do %>
-  <div><%= submit_tag 'Revision' %></div>
+  <%= submit_tag 'Revision' %>
 <% end %>
 
 
 <%= form_tag("reject") do %>
-  <div><%= submit_tag 'Reject' %></div>
+  <%= submit_tag 'Reject' %>
 <% end %>
 
-</div>
+
