@@ -1,16 +1,25 @@
 class AssignmentsController < ApplicationController
   def index
-  	@assignments = Assignment.all
+  	@assignments = Assignment.where(state: 0)
 
 
   end
 
   def show
   	@assignment = Assignment.find(params[:id])
-    @assignment.review 
-    # Change the current user's state
-    @assignment.transactions.create(transaction_type: "review", writer_id: @assignment.user_id)
-
+    if @assignment.state == 0
+      if @assignment.transactions.where(writer_id: @assignment.user_id, transaction_type: "review").length > 2
+        flash[:notice] = "You can no longer review this assignment"
+        redirect_to "/assignments"
+      else
+         @assignment.review 
+        # Change the current user's state
+        @assignment.transactions.create(transaction_type: "review", writer_id: @assignment.user_id)
+      end
+    else
+      flash[:notice] = "That assignment is currently being reviewed by another writer"
+      redirect_to "/assignments"
+    end
   end
 
   def new
@@ -50,17 +59,20 @@ end
   def renew
     @assignment = Assignment.find(params[:id])
     @assignment.renew
+    @assignment.transactions.create(transaction_type: "renew", writer_id: @assignment.user_id)
     redirect_to "/assignments"
   end
 
   def write  
     @assignment = Assignment.find(params[:id])
-    @assignment.write        
+    @assignment.write
+    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)        
   end
 
   def cancel
     @assignment = Assignment.find(params[:id])
     if @assignment.cancel
+      @assignment.transactions.create(transaction_type: "cancel", writer_id: @assignment.user_id)
       flash[:notice] = "You can only review this assignment 1 more time."
       redirect_to "/assignments"
     else
@@ -73,38 +85,33 @@ end
   def authorize
     @assignment = Assignment.find(params[:id])
     @assignment.authorize
+    @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
    
   end
  
   def published
     @assignment = Assignment.find(params[:id])
     @assignment.published
+    @assignment.transactions.create(transaction_type: "published", writer_id: @assignment.user_id)
   end
 
   def reject
     @assignment = Assignment.find(params[:id])
     @assignment.reject
+    @assignment.transactions.create(transaction_type: "reject", writer_id: @assignment.user_id)
     redirect_to "/assignments"
   end
 
   def revision
     @assignment = Assignment.find(params[:id])
     @assignment.revision
+    @assignment.transactions.create(transaction_type: "revision", writer_id: @assignment.user_id)
   end
 
   def resubmit
     @assignment = Assignment.find(params[:id])
     @assignment.resubmit
-  end
-
-  def resubmission
-    @assignment = Assignment.find(params[:id])
-    @assignments.resubmission
-  end
-
-def hide
-    @assignment = Assignment.find(params[:id])
-    @assignnments.hide
+    @assignment.transactions.create(transaction_type: "resubmit", writer_id: @assignment.user_id)
   end
 
 end

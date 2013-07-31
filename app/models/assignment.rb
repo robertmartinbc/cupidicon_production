@@ -70,9 +70,6 @@ class Assignment < ActiveRecord::Base
       transition :resubmit => :open
     end
 
-    event :hide do
-      transition :open => :review
-    end
 
     end
 end
