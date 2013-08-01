@@ -35,8 +35,12 @@
               <td><%= @assignment.instructions %></td>
               </tr> 
                     
-            </table>
-            <table>
+            </table>   
+        </div>
+      </div>
+    </div>
+    <p> 
+    <table>
               <tr>
               <td><%= form_tag("#{@assignment.id}/renew") do %>
                   <%= submit_tag 'Cancel' %>
@@ -47,11 +51,9 @@
                   <% end %>
               </td>
               </tr>      
-            </table>       
-        </div>
-      </div>
-    </div> 
+            </table>    
   </div>
+</div>
 
 
 

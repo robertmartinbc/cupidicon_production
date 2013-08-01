@@ -69,7 +69,8 @@ end
   def write  
     @assignment = Assignment.find(params[:id])
     @assignment.write
-    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)        
+    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)
+
   end
 
   def cancel
@@ -88,8 +89,9 @@ end
   def authorize
     @assignment = Assignment.find(params[:id])
     @assignment.authorize
+    # flash[:notice] = "Your assignment has been submitted for review. You can track the progress in your assignment status."
     @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
-   
+    # redirect_to "/assignments" 
   end
  
   def published

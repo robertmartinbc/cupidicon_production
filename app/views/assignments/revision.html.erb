@@ -3,19 +3,39 @@
 
 <p>Alternatively, you can cancel the assignment and let another author attempt it.</p>
 
-<h1><%= @assignment.title %></h1>
+<div class="media"> 
+  <div class="media-body">
+    <div class="row">
+      <div class="span12">
+        <div class="thumbnail">      
+          <h4><%= @assignment.title %></h4>
+            <p><%= @assignment.body %></p>
+            <p><%= @assignment.word_count %></p>
+            <p><%= @assignment.language %></p>
+            <p><%= @assignment.rating %></p>
+            <p><%= @assignment.key_words %></p>
+            <p><%= @assignment.cost %></p>
+            <p><%= @assignment.style %></p>
+            <p><%= @assignment.instructions %></p>  
+          </div>          
+        </div>
+      </div>
+      <p>
+      <table>
+              <tr>
+              <td><%= form_tag("/assignments/#{@assignment.id}/resubmit") do %>
+                  <%= submit_tag 'Resubmit' %>
+              <% end %>
+              </td>
+              <td><%= form_tag("cancel") do %>
+                  <%= submit_tag 'Cancel' %>
+              <% end %>
+              </td>
+              </tr>      
+            </table>
 
 
-<p><%= @assignment.body %></p>
 
-<%= form_tag("/assignments/#{@assignment.id}/resubmit") do %>
-  <div><%= submit_tag 'Resubmit' %></div>
-<% end %>
-<div>
 
-<%= form_tag("cancel") do %>
-  <div><%= submit_tag 'Cancel' %></div>
-<% end %>
 
-</div>
 
