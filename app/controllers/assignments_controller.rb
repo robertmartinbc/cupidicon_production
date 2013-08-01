@@ -34,8 +34,8 @@ class AssignmentsController < ApplicationController
   @assignment = current_user.assignments.build(params[:assignment])
   authorize! :create, @assignment, message: "You need to be signed up to do that."
   if @assignment.save
-    flash[:notice] = "Assignment was saved."
-    redirect_to @assignment
+    flash[:notice] = "Your assignment was created and can be viewed in Love's Lexicon"
+    redirect_to "/assignments"
   else
     flash[:error] = "There was an error saving the Assignment. Please try again."
     render :new
