@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729195535) do
+ActiveRecord::Schema.define(:version => 20130729194145) do
 
   create_table "assignments", :force => true do |t|
     t.string   "title"
@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(:version => 20130729195535) do
   end
 
   add_index "comments", ["assignment_id"], :name => "index_comments_on_assignment_id"
-
-  create_table "transactions", :force => true do |t|
-    t.string   "transaction_type"
-    t.integer  "assignment_id"
-    t.integer  "writer_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
