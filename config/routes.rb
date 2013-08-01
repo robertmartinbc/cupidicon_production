@@ -1,4 +1,4 @@
-CupidiconTest::Application.routes.draw do
+CupidiconProduction::Application.routes.draw do
   
   get "assignments/confirm"
 

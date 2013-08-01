@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CupidiconTest::Application.load_tasks
+CupidiconProduction::Application.load_tasks
