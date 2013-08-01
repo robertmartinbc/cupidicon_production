@@ -7,11 +7,11 @@ class AssignmentsController < ApplicationController
   def show
   	@assignment = Assignment.find(params[:id])
     if @assignment.state == 0
-      if @assignment.transactions.where(writer_id: @assignment.user_id, transaction_type: "review").length > 2
+      if @assignment.transactions.where(writer_id: @assignment.user_id, transaction_type: "review").length > 20
         flash[:notice] = "You can no longer review this assignment"
         redirect_to "/assignments"
       else
-         @assignment.review 
+        # @assignment.review 
         # Change the current user's state
         @assignment.transactions.create(transaction_type: "review", writer_id: @assignment.user_id)
       end
@@ -19,6 +19,10 @@ class AssignmentsController < ApplicationController
       flash[:notice] = "That assignment is currently being reviewed by another writer"
       redirect_to "/assignments"
     end
+  end
+
+  def confirm
+    @assignment = Assignment.find(params[:id])
   end
 
   def new

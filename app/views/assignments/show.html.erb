@@ -1,18 +1,53 @@
+<h3>Review Assignment</h3>
+
+<p style="text-align: justify;">The assignment below is currently available to write. The client will often provide specific instructions. Please ensure you read the instructions and understand their requirements before electing to write this assignment.</p>
+
+<p>Alternatively, you can elect to cancel the assignment, but you will only be allowed to select this assignment once more.</p>
+
+
 <div class="media"> 
   <div class="media-body">
     <div class="row">
       <div class="span12">
         <div class="thumbnail">      
-          <h4><%= @assignment.title %></h4>
-            <p><%= @assignment.body %></p>
-            <p><%= @assignment.word_count %></p>
-            <p><%= @assignment.language %></p>
-            <p><%= @assignment.rating %></p>
-            <p><%= @assignment.key_words %></p>
-            <p><%= @assignment.cost %></p>
-            <p><%= @assignment.style %></p>
-            <p><%= @assignment.instructions %></p>  
-          </div>          
+          <table class="table table-condensed table-striped">
+          <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Word Count</th> 
+          <th>Language</th>
+          <th>Rating</th>
+          <th>Key Words</th>
+          <th>Price</th>
+          <th>Style</th>
+          <th>Instructions</th>
+          </tr>
+
+          <tr>
+          <td><%= @assignment.title %></td>
+              <td><%= @assignment.body %></td>
+              <td><%= @assignment.word_count %></td>
+              <td><%= @assignment.language %></td>
+              <td><%= @assignment.rating %></td>
+              <td><%= @assignment.key_words %></td>
+              <td><%= @assignment.cost %></td>
+              <td><%= @assignment.style %></td>
+              <td><%= @assignment.instructions %></td>
+              </tr> 
+                    
+            </table>
+            <table>
+              <tr>
+              <td><%= form_tag("#{@assignment.id}/renew") do %>
+                  <%= submit_tag 'Cancel' %>
+              <% end %>
+              </td>
+              <td><%= form_tag("#{@assignment.id}/write") do %>
+                  <%= submit_tag 'Write' %>
+                  <% end %>
+              </td>
+              </tr>      
+            </table>       
         </div>
       </div>
     </div> 
@@ -22,24 +57,6 @@
 
 
 
-<p><%= @assignment.word_count %></p>
-<p><%= @assignment.language %></p>
-<p><%= @assignment.rating %></p>
-<p><%= @assignment.key_words %></p>
-<p><%= @assignment.cost %></p>
-<p><%= @assignment.style %></p>
-<p><%= @assignment.instructions %></p>
 
-<%= form_tag("#{@assignment.id}/renew") do %>
-  <div><%= submit_tag 'Release' %></div>
-<% end %>
-<div>
-<% if can? :edit, @assignment %>
-<%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
-<% end %>
 
-<%= form_tag("#{@assignment.id}/write") do %>
-  <div><%= submit_tag 'Write' %></div>
-<% end %>
 
-</div>

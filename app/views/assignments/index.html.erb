@@ -3,6 +3,10 @@
 <p>Please select one of the assignments below to review. You can only review an assignment twice.</p>
 <hr>
 
+<% if can? :create, Assignment %>
+<%= link_to "New Assignment", new_assignment_path, class: 'btn btn-danger btn-mini' %>
+<% end %>
+
 <% @assignments.each do |assignment| %>
  
 <div class="media"> 
@@ -12,8 +16,7 @@
         <div class="thumbnail">      
           <h5><%= link_to assignment.title, assignment %></h5>
             <small>
-                submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>
-        
+                submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>        
             </small>      
           </div>
         </div>
